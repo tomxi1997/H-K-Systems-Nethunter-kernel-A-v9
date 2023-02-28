@@ -77,8 +77,6 @@ struct bcm_bt_gpio {
 
 int idle_ip_index;
 
-EXPORT_SYMBOL(check_bt_op);
-
 static int bcm43xx_bt_rfkill_set_power(void *data, bool blocked)
 {
 	/* rfkill_ops callback. Turn transmitter on when blocked is false */
@@ -332,7 +330,7 @@ static int bcm43xx_bluetooth_probe(struct platform_device *pdev)
 		return -ENOMEM;
 	}
 
-	rfkill_init_sw_state(bt_rfkill, 0);
+	rfkill_init_sw_state(bt_rfkill, 1);
 
 	rc = rfkill_register(bt_rfkill);
 
@@ -359,7 +357,7 @@ static int bcm43xx_bluetooth_probe(struct platform_device *pdev)
 	}
 #endif
 	idle_ip_index = exynos_get_idle_ip_index("bluetooth");
-    exynos_update_ip_idle_status(idle_ip_index, STATUS_IDLE);
+        exynos_update_ip_idle_status(idle_ip_index, STATUS_IDLE);
 
 	pr_info("[BT] bcm43xx_bluetooth_probe End \n");
 	return rc;
