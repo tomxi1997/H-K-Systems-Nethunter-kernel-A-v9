@@ -45,7 +45,7 @@ jobs:
       run: |
         echo "TIME=$(TZ=UTC-8 date +%m%d%H%M )" >> $GITHUB_OUTPUT
 
-    - name: Build Kernel-SU
+   - name: Build Kernel-SU
       run: |
        export PATH=$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
        export ARCH=arm64
@@ -69,9 +69,9 @@ jobs:
       with:
         name: Kernel-kernelsu-oneui-greatlte-${{ steps.get_time.outputs.TIME }}
         path: "AnyKernel3/*"
-
+        
     - name: Build LXC-Kernel-SU
-      run: |
+       run: |
         export PATH=$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
         git clone -b lxc https://github.com/tomxi1997/H-K-Systems-Nethunter-kernel-A-v9.git note8 --depth=1
         cd note8
