@@ -16,4 +16,5 @@ config ANDROID_MAJOR_VERSION
 	string
 	option env="ANDROID_MAJOR_VERSION"
 
+source "utils/Kconfig"
 source "arch/$SRCARCH/Kconfig"
