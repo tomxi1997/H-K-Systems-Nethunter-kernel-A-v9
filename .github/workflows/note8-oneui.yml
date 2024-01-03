@@ -1,5 +1,5 @@
 name: Build samsung-note8-exynos8895-Kernel
-on:
+ on:
   workflow_dispatch:
   schedule:
       # Run once a week on Sunday at midnight. See http://crontab.guru
