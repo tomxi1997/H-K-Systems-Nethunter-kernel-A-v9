@@ -1,4 +1,4 @@
-name: Build samsung-note8-exynos8895-Kernel
+name: Build samsung-note8-exynos8895-ONEUI-Kernel
 on:
   workflow_dispatch:
   schedule:
@@ -67,7 +67,7 @@ jobs:
     - name: Upload Kernel 
       uses: actions/upload-artifact@v3
       with:
-        name: Kernel-kernelsu-lineage-20.0-greatlte-${{ steps.get_time.outputs.TIME }}
+        name: Kernel-kernelsu-oneui-greatlte-${{ steps.get_time.outputs.TIME }}
         path: "AnyKernel3/*"
 
     - name: Build LXC-Kernel-SU
@@ -90,5 +90,5 @@ jobs:
     - name: Upload Kernel
       uses: actions/upload-artifact@v3
       with:
-        name: kernel-kernelsu-lxc-lineage-20.0-greatlte-${{ steps.get_time.outputs.TIME }}
+        name: Kernel-kernelsu-lxc-oneui-greatlte-${{ steps.get_time.outputs.TIME }}
         path: "AnyKernel3/*"
