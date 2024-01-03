@@ -81,8 +81,7 @@ jobs:
         git clone -b main https://github.com/tiann/KernelSU.git KernelSU
         ln -sf "$GKI_ROOT/KernelSU/kernel" "$DRIVER_DIR/kernelsu"
         sed -i '$a\obj-y += kernelsu/' "$DRIVER_MAKEFILE"
-        #make $KERNEL_CMDLINE exynos8895-greatlte_lxc_defconfig CC="ccache clang"
-        make $KERNEL_CMDLINE CC="ccache clang" note8_lxc_defconfig
+        make $KERNEL_CMDLINE CC="ccache clang" not8_cifs_smb_defconfig
         make $KERNEL_CMDLINE CC="ccache clang" -j$(nproc --all)
         cp out/arch/arm64/boot/Image.gz ../AnyKernel3
       
