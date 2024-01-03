@@ -47,7 +47,7 @@ jobs:
 
     - name: Build Kernel-SU
       run: |
-       export PATH=$(pwd)/clang-aosp/clang/host/linux-x86/clang-r428724/bin:$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
+       export PATH=$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
        export ARCH=arm64
        export SUBARCH=arm64
        export GKI_ROOT=$(pwd)
@@ -60,8 +60,8 @@ jobs:
        echo "CONFIG_KPROBES=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
        echo "CONFIG_HAVE_KPROBES=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
        echo "CONFIG_%KPROBE_EVENTS=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
-       make $KERNEL_CMDLINE CC="ccache clang" not8_cifs_smb_defconfig
-       make $KERNEL_CMDLINE CC="ccache clang" -j$(nproc --all)
+       make $KERNEL_CMDLINE not8_cifs_smb_defconfig
+       make $KERNEL_CMDLINE -j$(nproc --all)
        cp out/arch/arm64/boot/Image.gz AnyKernel3
 
     - name: Upload Kernel 
@@ -72,7 +72,7 @@ jobs:
 
     - name: Build LXC-Kernel-SU
       run: |
-        export PATH=$(pwd)/clang-aosp/clang/host/linux-x86/clang-r428724/bin:$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
+        export PATH=$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
         git clone -b lxc https://github.com/tomxi1997/H-K-Systems-Nethunter-kernel-A-v9.git note8 --depth=1
         cd note8
         export GKI_ROOT=$(pwd)
@@ -81,8 +81,8 @@ jobs:
         git clone -b main https://github.com/tiann/KernelSU.git KernelSU
         ln -sf "$GKI_ROOT/KernelSU/kernel" "$DRIVER_DIR/kernelsu"
         sed -i '$a\obj-y += kernelsu/' "$DRIVER_MAKEFILE"
-        make $KERNEL_CMDLINE CC="ccache clang" not8_cifs_smb_defconfig
-        make $KERNEL_CMDLINE CC="ccache clang" -j$(nproc --all)
+        make $KERNEL_CMDLINE not8_cifs_smb_defconfig
+        make $KERNEL_CMDLINE -j$(nproc --all)
         cp out/arch/arm64/boot/Image.gz ../AnyKernel3
       
 
