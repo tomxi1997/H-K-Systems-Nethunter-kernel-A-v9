@@ -60,7 +60,7 @@ jobs:
        echo "CONFIG_KPROBES=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
        echo "CONFIG_HAVE_KPROBES=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
        echo "CONFIG_%KPROBE_EVENTS=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
-       make $KERNEL_CMDLINE $KERNEL_DEFCONFIG CC="ccache clang"
+       make $KERNEL_CMDLINE CC="ccache clang" not8_cifs_smb_defconfig
        make $KERNEL_CMDLINE CC="ccache clang" -j$(nproc --all)
        cp out/arch/arm64/boot/Image.gz AnyKernel3
 
@@ -73,7 +73,7 @@ jobs:
     - name: Build LXC-Kernel-SU
       run: |
         export PATH=$(pwd)/clang-aosp/clang/host/linux-x86/clang-r428724/bin:$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
-        git clone -b lineage-20.0-lxc_support https://github.com/tomxi1997/android_kernel_samsung_universal8895.git note8 --depth=1
+        git clone -b lxc https://github.com/tomxi1997/H-K-Systems-Nethunter-kernel-A-v9.git note8 --depth=1
         cd note8
         export GKI_ROOT=$(pwd)
         export DRIVER_DIR="$GKI_ROOT/drivers"
