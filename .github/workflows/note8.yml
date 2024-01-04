@@ -83,7 +83,9 @@ jobs:
         sed -i '$a\obj-y += kernelsu/' "$DRIVER_MAKEFILE"
         make $KERNEL_CMDLINE not8_cifs_smb_defconfig
         make $KERNEL_CMDLINE -j$(nproc --all)
+        rm -rf ../AnyKernel3/Image.gz
         cp out/arch/arm64/boot/Image.gz ../AnyKernel3
+        cd ..
       
 
     - name: Upload Kernel
