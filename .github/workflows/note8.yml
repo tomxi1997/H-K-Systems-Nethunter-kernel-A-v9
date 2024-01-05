@@ -59,7 +59,7 @@ jobs:
        sed -i '$a\obj-y += kernelsu/' "$DRIVER_MAKEFILE"
        echo "CONFIG_KPROBES=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
        echo "CONFIG_HAVE_KPROBES=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
-       echo "CONFIG_%KPROBE_EVENTS=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
+       echo "CONFIG_KPROBE_EVENTS=y" >> "$GKI_ROOT/arch/${ARCH}/configs/${KERNEL_DEFCONFIG}"
        make $KERNEL_CMDLINE not8_cifs_smb_defconfig
        make $KERNEL_CMDLINE -j$(nproc --all)
        cp out/arch/arm64/boot/Image.gz AnyKernel3
