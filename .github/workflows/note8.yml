@@ -51,6 +51,7 @@ jobs:
        export ARCH=arm64
        export SUBARCH=arm64
        export GKI_ROOT=$(pwd)
+       export KERNEL_DEFCONFIG=exynos8895-greatlte_defconfig
        export DRIVER_DIR="$GKI_ROOT/drivers"
        export DRIVER_MAKEFILE=$DRIVER_DIR/Makefile
        git clone -b main https://github.com/tiann/KernelSU.git KernelSU
