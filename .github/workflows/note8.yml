@@ -75,6 +75,8 @@ jobs:
         export PATH=$(pwd)/clang-aosp/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$(pwd)/clang-aosp/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
         git clone -b lxc https://github.com/tomxi1997/H-K-Systems-Nethunter-kernel-A-v9.git note8 --depth=1
         cd note8
+        export ARCH=arm64
+        export SUBARCH=arm64
         export GKI_ROOT=$(pwd)
         export DRIVER_DIR="$GKI_ROOT/drivers"
         export DRIVER_MAKEFILE=$DRIVER_DIR/Makefile
